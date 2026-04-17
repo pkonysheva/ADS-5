@@ -4,8 +4,8 @@
 #include "tstack.h"
 
 int prioritet(char op) {
-    if (op == '+' || op == '-') return 6;
-    if (op == '*' || op == '/') return 7;
+    if (op == '+' || op == '-') return 1;
+    if (op == '*' || op == '/') return 2;
     return 0;
 }
 

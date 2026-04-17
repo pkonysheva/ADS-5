@@ -3,10 +3,10 @@
 #define INCLUDE_TSTACK_H_
 #include <stdexcept>
 
-template<typename T, int size>
+template<typename T, int ksize>
 class TStack {
 private:
-  T data[size];
+  T data[ksize];
   int Index;
 
  public:
@@ -17,7 +17,7 @@ private:
     }
 
     bool isFull() const {
-        return Index >= size;
+        return Index >= ksize;
     }
 
     void push(const T& value) {

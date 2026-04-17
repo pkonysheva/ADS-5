@@ -5,11 +5,11 @@
 
 template<typename T, int size>
 class TStack {
-  private:
-    T data[size];
-    int Index;
+private:
+  T data[size];
+  int Index;
 
-public:
+ public:
     TStack() : Index(0) {}
 
     bool isEmpty() const {

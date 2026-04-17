@@ -3,7 +3,7 @@
 #include <map>
 #include "tstack.h"
 
-int prioritet(char op) {
+int priority(char op) {
     if (op == '+' || op == '-') return 1;
     if (op == '*' || op == '/') return 2;
     return 0;
@@ -38,7 +38,7 @@ std::string infx2pstfx(const std::string& inf) {
         } else if (c == '+' || c == '-' || c == '*' || c == '/') {
             while (!operators.isEmpty() &&
                    operators.top() != '(' &&
-                   prioritet(operators.top()) >= prioritet(c)) {
+                   priority(operators.top()) >= priority(c)) {
                 postfix += operators.pop();
                 postfix += ' ';
             }

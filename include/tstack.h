@@ -3,42 +3,42 @@
 #define INCLUDE_TSTACK_H_
 #include <stdexcept>
 
-template<typename T, int ksize>
+template<typename T, size_t kArraySize>
 class TStack {
-private:
-  T data[ksize];
-  int Index;
+ private:
+  T data[kArraySize];
+  size_t topIndex;
 
  public:
-    TStack() : Index(0) {}
+  TStack() : topIndex(0) {}
 
-    bool isEmpty() const {
-        return Index == 0;
-    }
+  bool isEmpty() const {
+    return topIndex == 0;
+  }
 
-    bool isFull() const {
-        return Index >= ksize;
-    }
+  bool isFull() const {
+    return topIndex >= kArraySize;
+  }
 
-    void push(const T& value) {
-        if (!isFull()) {
-            data[Index++] = value;
-        }
+  void push(const T& value) {
+    if (!isFull()) {
+      data[topIndex++] = value;
     }
+  }
 
-    T pop() {
-        if (!isEmpty()) {
-            return data[--Index];
-        }
-        throw std::runtime_error("Stack is empty");
+  T pop() {
+    if (isEmpty()) {
+      throw std::runtime_error("Stack is empty");
     }
+    return data[--topIndex];
+  }
 
-    const T& top() const {
-        if (!isEmpty()) {
-            return data[Index - 1];
-        }
-        throw std::runtime_error("Stack is empty");
+  const T& top() const {
+    if (isEmpty()) {
+      throw std::runtime_error("Stack is empty");
     }
+    return data[topIndex - 1];
+  }
 };
 
 #endif  // INCLUDE_TSTACK_H_
